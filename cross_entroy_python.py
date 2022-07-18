@@ -1,7 +1,5 @@
 
 '''
-运行环境：https://idex.oa.com/jupyter/instances/cc14623c81e15ccc/user/avaxzhang/lab/tree/pytorch/%E4%BA%A4%E5%8F%89%E7%86%B5.ipynb
-
 @author: zhangxian
 @brief Description : 交叉熵的python实现 ,X 2-d array , Y 1-d array
 
