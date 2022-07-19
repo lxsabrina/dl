@@ -68,3 +68,9 @@ https://github.com/czy36mengfei/tensorflow2_tutorials_chinese
 
 https://pytorch.org/tutorials/ 
 
+
+# 业务场景
+
+1、TF-ranking https://www.bilibili.com/video/BV1eR4y1E7eQ?spm_id_from=333.337.search-card.all.click
+
+2、deepCTR 
