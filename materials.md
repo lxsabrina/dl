@@ -64,11 +64,18 @@ https://github.com/chiphuyen/stanford-tensorflow-tutorials
 https://github.com/czy36mengfei/tensorflow2_tutorials_chinese
 
 
-7   pytorch 资源   
+7   pytorch 资源 （7.22日晚上要读完）  
+
+官方教程
 
 https://pytorch.org/tutorials/ 
-重要 pytorch API（ reading 7.22）
-https://blog.csdn.net/wulele2/article/details/122035572
+
+重要API和一些例子
+
+https://blog.csdn.net/wulele2/article/details/122035572 
+
+pytorch 资源总结
+https://cloud.tencent.com/developer/news/330003
 
 
 
