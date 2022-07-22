@@ -1,4 +1,4 @@
-Tensorflow 学习资料
+DL 学习资料（tensorflow,pytorch)
 
 # 教程资源
 
@@ -67,6 +67,9 @@ https://github.com/czy36mengfei/tensorflow2_tutorials_chinese
 7   pytorch 资源   
 
 https://pytorch.org/tutorials/ 
+重要 pytorch API（ reading 7.22）
+https://blog.csdn.net/wulele2/article/details/122035572
+
 
 
 # 业务场景
