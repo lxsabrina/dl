@@ -1,0 +1,95 @@
+# --coding:utf8---
+#  强化学习例子
+# https://www.bilibili.com/video/BV13W411Y75P?p=6&vd_source=f31dcef75770e70f5bc0d4b7f3c83cee
+
+
+import numpy as np
+import pandas as pd
+import time
+np.random.seed(2)
+
+N_STATES = 6
+ACTIONS  = ['left', 'right']
+EPSLION  = 0.9 
+ALPHA = 0.1
+LAMBDA = 0.9  
+MAX_EPISODES= 13
+FRESH_TIME= 0.3
+
+def build_q_table( n_state, actions): # 横轴 actions  纵轴  states
+    table = pd.DataFrame(np.zeros((N_STATES, len(actions))), columns = actions)
+    print(table)
+    return table
+
+def chose_action( state, q_table):
+    state_actions = q_table.iloc[state, :]
+    if np.random.uniform()> EPSLION or  state_actions.all() == 0:
+        action_name = np.random.choice(ACTIONS)
+    else:
+        action_name = np.argmax(state_actions)
+    return action_name
+
+
+def get_env_feedback(S,A): #输入 state, action, 输出是下一个state 和 reward ，也就是和环境交互. 只有最终达到终点，R=1 
+    if A==  "right":
+        if S == N_STATES -2 :
+            S_ = 'terminate'
+            R = 1
+        else:
+            S_ = S +1
+            R = 0 
+    else:
+        R = 0 
+        if S ==0 :
+            S_ = S 
+        else: 
+            S_ = S-1
+    return S_, R 
+
+
+def update_env(S, episode, step_counter):
+    env_list = ['-'] * (N_STATES -1) + ['T']
+    if S == 'terminate':
+        interaction = 'EPSLION %s total_steps %s' % ( episode +1 , step_counter)
+        print(interaction)
+        time.sleep(2)
+    else:
+        env_list[S] = 'o'
+        interaction = ''.join(env_list)
+        print(interaction)
+        time.sleep(FRESH_TIME)
+
+
+
+def rl():
+    q_table =  build_q_table(N_STATES, ACTIONS)
+    for episode in range(MAX_EPISODES):
+        step_encount = 0 
+        S = 0 
+        is_terminate = False
+        update_env(S, episode, step_encount)
+        while not is_terminate:
+            A = chose_action(S, q_table)
+            S_, R = get_env_feedback(S, A)
+            q_predict = q_table.ix[S,A]
+            if S_ != 'terminate':   #类似 BF 反向传播更新 q_target
+                q_target = R + LAMBDA * q_table.iloc[S_, :].max()
+            else:
+                q_target = R 
+                is_terminate = True
+            q_table.ix[S, A] += ALPHA  * (q_target - q_predict) 
+            S = S_
+
+            update_env(S, episode, step_encount+1)
+            step_encount += 1
+    return q_table
+
+
+if __name__ == '__main__':
+    q_table = rl()
+    print(q_table)
+
+
+
+
+
